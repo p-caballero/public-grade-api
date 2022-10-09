@@ -1,0 +1,362 @@
+﻿[
+	{
+		"name": "Ingeniería de Computadores 1",
+		"section": "Grados",
+		"courses": [
+			{
+				"code": "2040001",
+				"name": "Fundamentos de Programación",
+				"credits": 12,
+				"duration": 0,
+				"madatory": true
+			},
+			{
+				"code": "2040006",
+				"name": "Administración de Empresas",
+				"credits": 6,
+				"duration": 1,
+				"madatory": true
+			},
+			{
+				"code": "2040002",
+				"name": "Álgebra Lineal y Numérica",
+				"credits": 6,
+				"duration": 1,
+				"madatory": true
+			},
+			{
+				"code": "2040003",
+				"name": "Circuitos Electrónicos Digitales",
+				"credits": 6,
+				"duration": 1,
+				"madatory": true
+			},
+			{
+				"code": "2040005",
+				"name": "Introducción a la Matemática Discreta",
+				"credits": 6,
+				"duration": 1,
+				"madatory": true
+			},
+			{
+				"code": "2040007",
+				"name": "Cálculo Infinitesimal y Numérico",
+				"credits": 6,
+				"duration": 2,
+				"madatory": true
+			},
+			{
+				"code": "2040008",
+				"name": "Estadística",
+				"credits": 6,
+				"duration": 2,
+				"madatory": true
+			},
+			{
+				"code": "2040009",
+				"name": "Estructura de Computadores",
+				"credits": 6,
+				"duration": 2,
+				"madatory": true
+			},
+			{
+				"code": "2040004",
+				"name": "Fundamentos Físicos de la Informática",
+				"credits": 6,
+				"duration": 2,
+				"madatory": true
+			}
+		]
+	},
+	{
+		"name": "Ingeniería de Computadores 2",
+		"section": "Grados",
+		"courses": [
+			{
+				"code": "2040010",
+				"name": "Análisis y Diseño de Datos y Algoritmos",
+				"credits": 12,
+				"duration": 0,
+				"madatory": true
+			},
+			{
+				"code": "2040012",
+				"name": "Diseño de Sistemas Digitales",
+				"credits": 6,
+				"duration": 1,
+				"madatory": true
+			},
+			{
+				"code": "2040047",
+				"name": "Introducción a la Ingeniería del Software y los Sistemas de Información I",
+				"credits": 6,
+				"duration": 1,
+				"madatory": true
+			},
+			{
+				"code": "2040013",
+				"name": "Sistemas Operativos",
+				"credits": 6,
+				"duration": 1,
+				"madatory": true
+			},
+			{
+				"code": "2040014",
+				"name": "Tecnología de Computadores",
+				"credits": 6,
+				"duration": 1,
+				"madatory": true
+			},
+			{
+				"code": "2040015",
+				"name": "Arquitectura de Computadores",
+				"credits": 6,
+				"duration": 2,
+				"madatory": true
+			},
+			{
+				"code": "2040048",
+				"name": "Introducción a la Ingeniería del Software y los Sistemas de Información II",
+				"credits": 6,
+				"duration": 2,
+				"madatory": true
+			},
+			{
+				"code": "2040016",
+				"name": "Matemática Discreta",
+				"credits": 6,
+				"duration": 2,
+				"madatory": true
+			},
+			{
+				"code": "2040017",
+				"name": "Redes de Computadores",
+				"credits": 6,
+				"duration": 2,
+				"madatory": true
+			}
+		]
+	},
+	{
+		"name": "Ingeniería de Computadores 3",
+		"section": "Grados",
+		"courses": [
+			{
+				"code": "2040049",
+				"name": "Arquitectura y Tecnologías de Redes I",
+				"credits": 6,
+				"duration": 1,
+				"madatory": true
+			},
+			{
+				"code": "2040019",
+				"name": "Inteligencia Artificial",
+				"credits": 6,
+				"duration": 1,
+				"madatory": true
+			},
+			{
+				"code": "2040021",
+				"name": "Sistemas Paralelos y Distribuidos",
+				"credits": 6,
+				"duration": 1,
+				"madatory": true
+			},
+			{
+				"code": "2040026",
+				"name": "Software de Sistemas",
+				"credits": 6,
+				"duration": 1,
+				"madatory": true
+			},
+			{
+				"code": "2040022",
+				"name": "Teoría de Grafos",
+				"credits": 6,
+				"duration": 1,
+				"madatory": true
+			},
+			{
+				"code": "2040050",
+				"name": "Arquitectura y Tecnologías de Redes II ",
+				"credits": 6,
+				"duration": 2,
+				"madatory": true
+			},
+			{
+				"code": "2040023",
+				"name": "Desarrollo de Aplicaciones Distribuidas",
+				"credits": 6,
+				"duration": 2,
+				"madatory": true
+			},
+			{
+				"code": "2040024",
+				"name": "Geometría Computacional",
+				"credits": 6,
+				"duration": 2,
+				"madatory": true
+			},
+			{
+				"code": "2040020",
+				"name": "Periféricos e Interfaces",
+				"credits": 6,
+				"duration": 2,
+				"madatory": true
+			},
+			{
+				"code": "2040025",
+				"name": "Sistemas Empotrados y de Tiempo Real I",
+				"credits": 6,
+				"duration": 2,
+				"madatory": true
+			}
+		]
+	},
+	{
+		"name": "Ingeniería de Computadores 4",
+		"section": "Grados",
+		"courses": [
+			{
+				"code": "2040032",
+				"name": "Laboratorio de Desarrollo de Hardware",
+				"credits": 6,
+				"duration": 1,
+				"madatory": true
+			},
+			{
+				"code": "2040033",
+				"name": "Planificación y Gestión de Proyectos Informáticos",
+				"credits": 6,
+				"duration": 1,
+				"madatory": true
+			},
+			{
+				"code": "2040036",
+				"name": "Sistemas Empotrados y de Tiempo Real II",
+				"credits": 6,
+				"duration": 1,
+				"madatory": true
+			},
+			{
+				"code": "2040046",
+				"name": "Trabajo Fin de Grado ",
+				"credits": 12,
+				"duration": 2,
+				"madatory": true
+			},
+			{
+				"code": "2040027",
+				"name": "Prácticas Externas",
+				"credits": 6,
+				"duration": 0,
+				"madatory": false
+			},
+			{
+				"code": "2040028",
+				"name": "Criptografía",
+				"credits": 6,
+				"duration": 1,
+				"madatory": false
+			},
+			{
+				"code": "2040030",
+				"name": "Fiabilidad y Tolerancia a Fallos",
+				"credits": 6,
+				"duration": 1,
+				"madatory": false
+			},
+			{
+				"code": "2040031",
+				"name": "Gestión de la Producción",
+				"credits": 6,
+				"duration": 1,
+				"madatory": false
+			},
+			{
+				"code": "2040034",
+				"name": "Procesamiento Digital de Señales",
+				"credits": 6,
+				"duration": 1,
+				"madatory": false
+			},
+			{
+				"code": "2040035",
+				"name": "Seguridad en Sistemas Informáticos y en Internet",
+				"credits": 6,
+				"duration": 1,
+				"madatory": false
+			},
+			{
+				"code": "2040037",
+				"name": "Tecnología, Informática y Sociedad ",
+				"credits": 6,
+				"duration": 1,
+				"madatory": false
+			},
+			{
+				"code": "2040038",
+				"name": "Acceso Inteligente a la Información",
+				"credits": 6,
+				"duration": 2,
+				"madatory": false
+			},
+			{
+				"code": "2040039",
+				"name": "Aplicaciones de Soft Computing ",
+				"credits": 6,
+				"duration": 2,
+				"madatory": false
+			},
+			{
+				"code": "2040029",
+				"name": "Estadística Computacional",
+				"credits": 6,
+				"duration": 2,
+				"madatory": false
+			},
+			{
+				"code": "2040040",
+				"name": "Integración de Sistemas Físicos e Informáticos",
+				"credits": 6,
+				"duration": 2,
+				"madatory": false
+			},
+			{
+				"code": "2040041",
+				"name": "Plataformas Hardware de Aplicación Específica",
+				"credits": 6,
+				"duration": 2,
+				"madatory": false
+			},
+			{
+				"code": "2040042",
+				"name": "Procesamiento de Imágenes Digitales",
+				"credits": 6,
+				"duration": 2,
+				"madatory": false
+			},
+			{
+				"code": "2040043",
+				"name": "Robótica y Automatización",
+				"credits": 6,
+				"duration": 2,
+				"madatory": false
+			},
+			{
+				"code": "2040044",
+				"name": "Sistemas de Adquisición y Control",
+				"credits": 6,
+				"duration": 2,
+				"madatory": false
+			},
+			{
+				"code": "2040045",
+				"name": "Teledetección",
+				"credits": 6,
+				"duration": 2,
+				"madatory": false
+			}
+		]
+	}
+]
