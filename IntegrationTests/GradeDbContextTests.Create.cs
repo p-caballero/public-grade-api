@@ -27,8 +27,23 @@
         [Fact]
         public void Add_Student()
         {
-            // TODO: Añadir un estudiante
-            false.Should().BeTrue("Pendiente");
+            var student = new Student()
+            {
+                Name = "Felipe de Borbón y Grecia",
+                Address = new StudentAddress
+                {
+                    Address1 = "Palacio de la Zarzuela",
+                    Address2 = "Carretera del Pardo S/N",
+                    ZipCode = 28071,
+                    City = "El Pardo",
+                    State = "Madrid",
+                    Country = "España"
+                }
+            };
+
+            _dbContext.Students.Add(student);
+
+            _dbContext.SaveChanges();
         }
 
         /// <summary>
