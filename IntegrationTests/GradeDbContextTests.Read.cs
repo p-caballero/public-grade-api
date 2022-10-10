@@ -4,6 +4,7 @@
     using Microsoft.EntityFrameworkCore;
     using System.Linq;
     using System.Threading.Tasks;
+    using System.Xml.Linq;
     using Xunit;
 
     public partial class GradeDbContextTests
@@ -116,8 +117,18 @@
         [Fact]
         public void Get_all_credits_per_student()
         {
-            // TODO: Todos los créditos de un estudiante
-            false.Should().BeTrue("Pendiente");
+            var actual = _dbContext.Students
+                .Include(x => x.StudentCourses).ThenInclude(x => x.Course)
+                .Select(x => new { x.Name, TotalCredits = x.StudentCourses.Sum(sc => sc.Course.Credits) })
+                .ToList();
+
+            // Assert
+            actual.Should().NotBeEmpty();
+
+            actual[0].Should().BeEquivalentTo(new { Name = "Estrella Montaño Garcia", TotalCredits = 60 });
+
+            actual.First()
+                .Should().BeEquivalentTo(new { Name = "Estrella Montaño Garcia", TotalCredits = 60 });
         }
     }
 }
