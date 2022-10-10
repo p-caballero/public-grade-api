@@ -60,6 +60,11 @@
                 entity.HasOne(student => student.Address)
                     .WithOne(sa => sa.Student)
                     .HasForeignKey<StudentAddress>(sa => sa.StudentId);
+
+                entity.HasMany(e => e.StudentCourses)
+                    .WithOne(sc => sc.Student)
+                    .HasForeignKey(x => x.StudentId)
+                    .OnDelete(DeleteBehavior.Restrict);
             });
 
             builder.Entity<StudentCourse>(entity =>
