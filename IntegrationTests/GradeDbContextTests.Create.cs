@@ -2,6 +2,9 @@
 {
     using FluentAssertions;
     using GradeApi.Persistence.Entitites;
+    using Microsoft.EntityFrameworkCore;
+    using System.Linq;
+    using System.Net;
     using Xunit;
 
     public partial class GradeDbContextTests
@@ -52,8 +55,40 @@
         [Fact]
         public void Add_StudentAddress_to_one_student_selectedby_id()
         {
-            // TODO: Añadir dirección de un studiante seleccionado por su id
-            false.Should().BeTrue("Pendiente");
+            var address = new StudentAddress()
+            {
+                Address1 = "Palacio de la Zarzuela",
+                Address2 = "Carretera del Pardo S/N",
+                ZipCode = 28071,
+                City = "El Pardo",
+                State = "Madrid",
+                Country = "España"
+            };
+
+            var miEstudiante43 = _dbContext.Students.First(x => x.Id == 43);
+
+            miEstudiante43.Address = address;
+
+            _dbContext.SaveChanges();
+        }
+
+        [Fact]
+        public void Add_StudentAddress_to_one_student_selectedby_id_ver2()
+        {
+            var address = new StudentAddress()
+            {
+                Address1 = "Palacio de la Zarzuela",
+                Address2 = "Carretera del Pardo S/N",
+                ZipCode = 28071,
+                City = "El Pardo",
+                State = "Madrid",
+                Country = "España",
+                StudentId = 43
+            };
+
+            _dbContext.StudentAddress.Add(address);
+
+            _dbContext.SaveChanges();
         }
     }
 }
