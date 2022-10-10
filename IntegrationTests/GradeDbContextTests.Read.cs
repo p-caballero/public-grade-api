@@ -3,7 +3,6 @@
     using FluentAssertions;
     using Microsoft.EntityFrameworkCore;
     using System.Linq;
-    using System.Text.Json;
     using System.Threading.Tasks;
     using Xunit;
 
@@ -33,6 +32,7 @@
             // Act
             var actual = _dbContext.Students
                 .Include(x => x.StudentCourses)
+                .ThenInclude(x => x.Course)
                 .ToList();
 
             // Assert
