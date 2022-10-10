@@ -5,7 +5,7 @@
     using Microsoft.EntityFrameworkCore;
     using System;
 
-    public class LocalhostDatabaseFixture : IDisposable
+    public class LocalhostDatabaseFactory
     {
         /// <summary>
         /// Cadena de conexión contra localdb
@@ -17,30 +17,29 @@
         /// </summary>
         private const string ConnectionStringSqlServer = "Data Source=.;Database=Grade;Integrated Security=true;";
 
-        public GradeDbContext DbContext { get; }
+        private readonly DbContextOptions<GradeDbContext> _options;
 
-        public LocalhostDatabaseFixture()
+        public LocalhostDatabaseFactory()
         {
             string connectionString = Environment.GetEnvironmentVariable("GRADEAPI_LOCALDB_MODE") == bool.TrueString ? 
                 ConnectionStringLocalDb : ConnectionStringSqlServer;
 
-            var options = new DbContextOptionsBuilder<GradeDbContext>()
+            _options = new DbContextOptionsBuilder<GradeDbContext>()
                .UseSqlServer(connectionString)
                .Options;
-
-            DbContext = new GradeDbContext(options);
-            DbContext.Database.EnsureDeleted();
-
-            if (DbContext.Database.EnsureCreated())
-            {
-                SeedDatabase.Seed(DbContext);
-            }
         }
 
-        public void Dispose()
+        public GradeDbContext Create()
         {
-            DbContext?.Dispose();
-            GC.SuppressFinalize(this);
+            var dbContext = new GradeDbContext(_options);
+            dbContext.Database.EnsureDeleted();
+
+            if (dbContext.Database.EnsureCreated())
+            {
+                SeedDatabase.Seed(dbContext);
+            }
+
+            return dbContext;
         }
     }
 }

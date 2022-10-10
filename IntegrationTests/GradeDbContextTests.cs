@@ -1,15 +1,23 @@
 namespace IntegrationTests
 {
     using GradeApi.Persistence;
+    using System;
     using Xunit;
 
-    public partial class GradeDbContextTests : IClassFixture<LocalhostDatabaseFixture>
+    [Collection("Sequential")]
+    public partial class GradeDbContextTests : IDisposable
     {
-        private readonly GradeDbContext _dbContext;
+        private GradeDbContext _dbContext;
 
-        public GradeDbContextTests(LocalhostDatabaseFixture databaseFixture)
+        public GradeDbContextTests()
         {
-            _dbContext = databaseFixture.DbContext;
+            _dbContext = new LocalhostDatabaseFactory().Create();
+        }
+
+        public void Dispose()
+        {
+            _dbContext?.Dispose();
+            _dbContext = null;
         }
     }
 }
