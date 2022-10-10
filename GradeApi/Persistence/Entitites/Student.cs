@@ -11,9 +11,9 @@
 
         public DateTime? DateOfBirth { get; set; }
 
-        public decimal? Height { get; set; }
+        public float? Height { get; set; }
 
-        public decimal? Weight { get; set; }
+        public float? Weight { get; set; }
 
         public int? AddressId { get; set; }
 
