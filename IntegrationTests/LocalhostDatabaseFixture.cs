@@ -10,19 +10,22 @@
         /// <summary>
         /// Cadena de conexión contra localdb
         /// </summary>
-        //const string ConnectionString = "Data Source=(localdb)\\MSSQLLocalDB;Database=Grade;Integrated Security=true;";
+        const string ConnectionStringLocalDb = "Data Source=(localdb)\\MSSQLLocalDB;Database=Grade;Integrated Security=true;";
 
         /// <summary>
         /// Cadena de conexión contra localhost
         /// </summary>
-        private const string ConnectionString = "Data Source=.;Database=Grade;Integrated Security=true;";
+        private const string ConnectionStringSqlServer = "Data Source=.;Database=Grade;Integrated Security=true;";
 
         public GradeDbContext DbContext { get; }
 
         public LocalhostDatabaseFixture()
         {
+            string connectionString = Environment.GetEnvironmentVariable("GRADEAPI_LOCALDB_MODE") == bool.TrueString ? 
+                ConnectionStringLocalDb : ConnectionStringSqlServer;
+
             var options = new DbContextOptionsBuilder<GradeDbContext>()
-               .UseSqlServer(ConnectionString)
+               .UseSqlServer(connectionString)
                .Options;
 
             DbContext = new GradeDbContext(options);
