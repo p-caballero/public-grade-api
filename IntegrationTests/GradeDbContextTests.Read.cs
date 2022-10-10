@@ -2,6 +2,7 @@
 {
     using FluentAssertions;
     using Microsoft.EntityFrameworkCore;
+    using System.Linq;
     using Xunit;
 
     public partial class GradeDbContextTests
@@ -13,7 +14,9 @@
         public void Get_all_grades()
         {
             // Act
-            var allGrades = _dbContext.Grades.Include(x => x.Courses);
+            var allGrades = _dbContext.Grades
+                .Include(x => x.Courses)
+                .ToList();
 
             // Assert
             allGrades.Should().HaveCount(4);
