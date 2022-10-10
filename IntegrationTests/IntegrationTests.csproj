@@ -19,11 +19,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Compile Remove="GradeDbContextTests.Procedures.cs" />
-		<Compile Remove="GradeDbContextTests.Update.cs" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<None Remove="xunit.runner.json" />
 	</ItemGroup>
 
@@ -34,13 +29,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="GradeDbContextTests.Procedures.cs" />
-		<None Include="GradeDbContextTests.Update.cs" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="EFCore.NamingConventions" Version="6.0.0" />
 		<PackageReference Include="FluentAssertions" Version="6.7.0" />
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.9" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.9" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.9">
 			<PrivateAssets>all</PrivateAssets>

@@ -1,6 +1,7 @@
 ﻿namespace IntegrationTests
 {
     using FluentAssertions;
+    using Microsoft.EntityFrameworkCore;
     using System.Linq;
     using Xunit;
 
@@ -28,9 +29,11 @@ WHERE
   AND [section] = 'Grados'";
 
             // Act
-            // TODO: Ejecutar SQL desde el script
+            int actual = _dbContext.Database.ExecuteSqlRaw(SqlQuery);
 
             // Assert
+            actual.Should().Be(4);
+
             _dbContext.Grades.Where(x => x.Section == "Grados")
                 .Should().BeEmpty();
 
