@@ -12,6 +12,8 @@
     [Route("[controller]")]
     public class StudentController : ControllerBase
     {
+        const string studentPrefix = "S";
+
         private readonly IStudentApplicationService _studentApplicationService;
         private readonly StudentToStudentDtoMapper _mapper;
 
@@ -57,10 +59,10 @@
             return Ok(studentDto);
         }
 
+        [HttpDelete]
+        [Route("v1/[controller]/{code}")]
         public IActionResult Delete(string code)
         {
-            const string studentPrefix = "S";
-
             if (!code.StartsWith(studentPrefix) || !int.TryParse(code.AsSpan(1), out int id))
             {
                 return BadRequest();
@@ -73,7 +75,7 @@
                 return Ok();
             }
 
-            return NoContent();
+            return NotFound();
         }
     }
 }

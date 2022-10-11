@@ -1,6 +1,7 @@
 ﻿namespace GradeApi.Persistence.Repositories
 {
     using GradeApi.Persistence.Entitites;
+    using Microsoft.EntityFrameworkCore;
     using System.Linq;
 
     public class StudentRepository : AbstractRepository<Student>, IStudentRepository
@@ -12,7 +13,21 @@
 
         public bool Delete(int id)
         {
-            throw new System.NotImplementedException();
+            var student = DbContext.Students
+                .Include(x => x.StudentCourses)
+                .SingleOrDefault(x => x.Id == id);
+
+            if (student == null)
+            {
+                return false;
+            }
+
+            DbContext.StudentCourses.RemoveRange(student.StudentCourses);
+            DbContext.Students.Remove(student);
+
+            int noChanges = DbContext.SaveChanges();
+
+            return noChanges > 0;
         }
 
         public IQueryable<Student> GetAll()

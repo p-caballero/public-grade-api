@@ -3,6 +3,7 @@
     using FluentAssertions;
     using GradeApi.Persistence.Entitites;
     using GradeApi.Persistence.Repositories;
+    using System.Linq;
     using Xunit;
 
     public class StudentRepositoryTests : AbstractRepositoryTests
@@ -32,12 +33,34 @@
             Assert.Equal(id, actual.Id);
         }
 
+        [Fact]
         public void Delete_ExistingStudent_DeleteStudentAndReturnsTrue()
-        { 
+        {
+            // Arrange
+            // 1.- Un ID que exista
+            const int id = 42;
+
+            // Act
+            bool actual = _repository.Delete(id);
+
+            // Assert
+            actual.Should().BeTrue();
+            DbContext.Students.Any(x => x.Id == id).Should().BeFalse();
+            DbContext.Students.FirstOrDefault(x => x.Id == id).Should().BeNull(); // Hace lo mismo que el anterior
         }
 
+        [Fact]
         public void Delete_NonExistingStudent_ReturnsFalse()
         {
+            // Arrange
+            // 1.- Un ID que NO exista
+            const int id = 1000;
+
+            // Act
+            bool actual = _repository.Delete(id);
+
+            // Assert
+            actual.Should().BeFalse();
         }
     }
 }

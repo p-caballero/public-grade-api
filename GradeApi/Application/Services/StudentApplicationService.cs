@@ -15,7 +15,7 @@
 
         public bool Delete(int id)
         {
-            // Notificar que se está borrando un usuario (LOG): _deleteLogApplicationService.DeleteStudent(id);
+            //_logger.LogWarning($"ELIMINANDO ESTUDIANTE S{id}");
             return _studentDomainService.Delete(id);
         }
 
