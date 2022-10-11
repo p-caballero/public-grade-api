@@ -2,9 +2,7 @@
 {
     using FluentAssertions;
     using GradeApi.Persistence.Entitites;
-    using Microsoft.EntityFrameworkCore;
     using System.Linq;
-    using System.Net;
     using Xunit;
 
     public partial class GradeDbContextTests
