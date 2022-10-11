@@ -3,6 +3,7 @@
     using GradeApi.Persistence.Entitites;
     using GradeApi.Persistence.Repositories;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class StudentDomainService : IStudentDomainService
     {
@@ -30,14 +31,14 @@
 
         public bool Exist(string name)
         {
-            throw new System.NotImplementedException();
             // Comprobar la existencia usando el repositorio según [Name]
+            return _studentRepository.GetAll().Any(x => x.Name == name);
         }
 
         public bool Exist(int id)
         {
-            throw new System.NotImplementedException();
             // Comprobar la existencia usando el repositorio según [ID]
+            return _studentRepository.GetAll().Any(x => x.Id == id);
         }
 
         public Student Create(Student student)
