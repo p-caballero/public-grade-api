@@ -6,5 +6,6 @@
     public interface IStudentRepository
     {
         IQueryable<Student> GetAll();
+        Student GetById(int id);
     }
 }

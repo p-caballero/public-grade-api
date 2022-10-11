@@ -15,5 +15,10 @@
             const int pageSize = 10;
             return GetAll(trackChanges: false).Take(pageSize);
         }
+
+        public Student GetById(int id)
+        {
+            return DbContext.Students.Find(id);
+        }
     }
 }

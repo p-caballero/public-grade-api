@@ -20,7 +20,7 @@
 
         public Student Get(int id)
         {
-            return null;
+            return _studentRepository.GetById(id);
         }
     }
 }
