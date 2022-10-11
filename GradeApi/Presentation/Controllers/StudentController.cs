@@ -56,5 +56,24 @@
 
             return Ok(studentDto);
         }
+
+        public IActionResult Delete(string code)
+        {
+            const string studentPrefix = "S";
+
+            if (!code.StartsWith(studentPrefix) || !int.TryParse(code.AsSpan(1), out int id))
+            {
+                return BadRequest();
+            }
+
+            bool deleted = _studentApplicationService.Delete(id);
+
+            if (deleted)
+            {
+                return Ok();
+            }
+
+            return NoContent();
+        }
     }
 }

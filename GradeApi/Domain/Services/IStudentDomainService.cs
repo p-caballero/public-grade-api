@@ -5,6 +5,7 @@
 
     public interface IStudentDomainService
     {
+        bool Delete(int id);
         Student Get(int id);
         IEnumerable<Student> GetAll();
     }

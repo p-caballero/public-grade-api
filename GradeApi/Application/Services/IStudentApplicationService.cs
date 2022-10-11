@@ -8,5 +8,6 @@
         IEnumerable<Student> GetAll();
 
         Student Get(int id);
+        bool Delete(int id);
     }
 }

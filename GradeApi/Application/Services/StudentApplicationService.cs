@@ -13,6 +13,12 @@
             _studentDomainService = studentDomainService;
         }
 
+        public bool Delete(int id)
+        {
+            // Notificar que se está borrando un usuario (LOG): _deleteLogApplicationService.DeleteStudent(id);
+            return _studentDomainService.Delete(id);
+        }
+
         public Student Get(int id)
         {
             return _studentDomainService.Get(id);

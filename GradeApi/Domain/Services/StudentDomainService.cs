@@ -22,5 +22,10 @@
         {
             return _studentRepository.GetById(id);
         }
+
+        public bool Delete(int id)
+        {
+            return _studentRepository.Delete(id);
+        }
     }
 }

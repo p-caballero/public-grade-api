@@ -5,6 +5,7 @@
 
     public interface IStudentRepository
     {
+        bool Delete(int id);
         IQueryable<Student> GetAll();
         Student GetById(int id);
     }

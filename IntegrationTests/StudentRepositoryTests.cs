@@ -31,5 +31,13 @@
             actual.Id.Should().Be(id);
             Assert.Equal(id, actual.Id);
         }
+
+        public void Delete_ExistingStudent_DeleteStudentAndReturnsTrue()
+        { 
+        }
+
+        public void Delete_NonExistingStudent_ReturnsFalse()
+        {
+        }
     }
 }

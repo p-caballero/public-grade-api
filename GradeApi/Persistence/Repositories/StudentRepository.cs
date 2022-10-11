@@ -10,6 +10,11 @@
         {
         }
 
+        public bool Delete(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IQueryable<Student> GetAll()
         {
             const int pageSize = 10;
