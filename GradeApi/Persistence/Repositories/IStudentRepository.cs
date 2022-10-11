@@ -6,7 +6,13 @@
     public interface IStudentRepository
     {
         bool Delete(int id);
+
         IQueryable<Student> GetAll();
+
         Student GetById(int id);
+
+        Student Insert(Student student);
+
+        Student Update(Student student);
     }
 }

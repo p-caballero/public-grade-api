@@ -40,5 +40,15 @@
         {
             return DbContext.Students.Find(id);
         }
+
+        public Student Insert(Student student)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        Student IStudentRepository.Update(Student student)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

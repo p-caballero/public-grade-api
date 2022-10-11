@@ -43,14 +43,14 @@
 
         public Student Create(Student student)
         {
-            throw new System.NotImplementedException();
-            // Insertar un estudiante usando el repositorio
+            // Pensad qué pasa si alguien inserta los mismo en este punto
+            return _studentRepository.Insert(student);
         }
 
         public Student Update(Student student)
         {
-            throw new System.NotImplementedException();
-            // Actualizar un estudiante utilizando el repositorio
+            // Pensad qué pasa si alguien elimina el estudiante en este punto
+            return _studentRepository.Update(student);
         }
     }
 }

@@ -62,5 +62,49 @@
             // Assert
             actual.Should().BeFalse();
         }
+
+        [Fact]
+        public void Insert_ExistingStudent_ReturnCreatedStudent()
+        {
+            // Arrange
+            Student existingStudent = null;
+
+            // Act
+            var actual = _repository.Insert(existingStudent);
+
+            // Assert
+
+            // <El estudiante se ha creado, es diferente al existente y los campos pasado se han guardado>
+        }
+
+        [Fact]
+        public void Insert_NonExistingStudent_ReturnCreatedStudent()
+        {
+            // Arrange
+
+            // Act
+
+            // Assert
+        }
+
+        [Fact]
+        public void Update_ExistingStudent_ReturnUpdatedStudent()
+        {
+            // Arrange
+
+            // Act
+
+            // Assert
+        }
+
+        [Fact]
+        public void Update_NonExistingStudent_ReturnNull()
+        {
+            // Arrange
+
+            // Act
+
+            // Assert
+        }
     }
 }
