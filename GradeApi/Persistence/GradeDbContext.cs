@@ -2,6 +2,7 @@
 {
     using GradeApi.Persistence.Entitites;
     using Microsoft.EntityFrameworkCore;
+    using System.Diagnostics;
 
     public partial class GradeDbContext : DbContext
     {
@@ -28,6 +29,9 @@
         {
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSnakeCaseNamingConvention();
+
+            // https://learn.microsoft.com/en-us/ef/core/logging-events-diagnostics/simple-logging
+            optionsBuilder.LogTo(message => Debug.WriteLine(message)).EnableSensitiveDataLogging();
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
