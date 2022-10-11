@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GradeApi", "GradeApi\GradeA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{9F5FBE92-CB7D-42E3-B2B1-A07DE43A0EDD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{2A3755A6-E434-41C0-9323-B4212ED628FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9F5FBE92-CB7D-42E3-B2B1-A07DE43A0EDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F5FBE92-CB7D-42E3-B2B1-A07DE43A0EDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F5FBE92-CB7D-42E3-B2B1-A07DE43A0EDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A3755A6-E434-41C0-9323-B4212ED628FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A3755A6-E434-41C0-9323-B4212ED628FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A3755A6-E434-41C0-9323-B4212ED628FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A3755A6-E434-41C0-9323-B4212ED628FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
