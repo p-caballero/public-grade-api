@@ -2,6 +2,7 @@
 {
     using GradeApi.Persistence;
     using GradeApi.Persistence.Entitites;
+    using Microsoft.EntityFrameworkCore;
     using System;
     using System.IO;
     using System.Linq;
@@ -22,6 +23,7 @@
 
             try
             {
+                AddProcedure(dbContext);
                 ApplySeed(dbContext);
                 transaction.Commit();
             } catch(Exception)
@@ -29,6 +31,27 @@
                 transaction.Rollback();
                 throw;
             }
+        }
+
+        private static void AddProcedure(GradeDbContext dbContext)
+        {
+            const string Query = @"
+CREATE PROCEDURE [dbo].[sp_get_students_by_course_name] 
+	@CourseName NVARCHAR(MAX)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+	SELECT DISTINCT s.[id], s.[name]
+    FROM [dbo].[students] s
+	INNER JOIN [dbo].[student_courses] sc ON s.[id] = sc.[student_id]
+	INNER JOIN [dbo].[courses] c ON c.[id] = sc.[course_id]
+	WHERE c.[name] = @CourseName
+	ORDER BY s.[name];
+END";
+            dbContext.Database.ExecuteSqlRaw(Query);
         }
 
         private static void ApplySeed(GradeDbContext dbContext)
