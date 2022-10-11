@@ -1,6 +1,6 @@
 ﻿namespace GradeApi.Application.Services
 {
-    using GradeApi.Persistence.Entitites;
+    using GradeApi.Domain.Entities;
     using System.Collections.Generic;
 
     public interface IStudentApplicationService

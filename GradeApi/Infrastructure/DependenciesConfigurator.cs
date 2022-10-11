@@ -3,7 +3,6 @@
     using GradeApi.Application.Services;
     using GradeApi.Domain.Services;
     using GradeApi.Persistence.Repositories;
-    using GradeApi.Presentation.Mappers;
     using Microsoft.Extensions.DependencyInjection;
 
     public static class DependenciesConfigurator
@@ -14,7 +13,7 @@
             AddDomainServices(services);
             AddRepositoryServices(services);
 
-            services.AddSingleton<StudentToStudentDtoMapper>();
+            services.AddAutoMapper(typeof(Program));
 
             return services;
         }

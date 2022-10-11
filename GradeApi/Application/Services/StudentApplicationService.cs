@@ -1,7 +1,7 @@
 ﻿namespace GradeApi.Application.Services
 {
+    using GradeApi.Domain.Entities;
     using GradeApi.Domain.Services;
-    using GradeApi.Persistence.Entitites;
     using System.Collections.Generic;
 
     public class StudentApplicationService : IStudentApplicationService

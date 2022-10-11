@@ -3,11 +3,10 @@
     using System;
     using GradeApi.Application.Services;
     using GradeApi.Presentation.Dtos;
-    using GradeApi.Presentation.Mappers;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-    using System.Linq;
-    using GradeApi.Persistence.Entitites;
+    using AutoMapper;
+    using System.Collections.Generic;
 
     [ApiController]
     [Route("[controller]")]
@@ -16,9 +15,9 @@
         const string studentPrefix = "S";
 
         private readonly IStudentApplicationService _studentApplicationService;
-        private readonly StudentToStudentDtoMapper _mapper;
+        private readonly IMapper _mapper;
 
-        public StudentController(IStudentApplicationService studentApplicationService, StudentToStudentDtoMapper mapper)
+        public StudentController(IMapper mapper, IStudentApplicationService studentApplicationService)
         {
             _studentApplicationService = studentApplicationService;
             _mapper = mapper;
@@ -29,11 +28,9 @@
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StudentDto[]))]
         public IActionResult Get()
         {
-            var all = _studentApplicationService.GetAll()
-                .Select(student => _mapper.ConvertToStudentDto(student))
-                .ToArray();
-
-            return Ok(all);
+            var allDomain = _studentApplicationService.GetAll();
+            var allDto = _mapper.Map<IEnumerable<Domain.Entities.Student>, StudentDto[]> (allDomain);
+            return Ok(allDto);
         }
 
         [HttpGet]
@@ -48,14 +45,14 @@
                 return BadRequest();
             }
 
-            var student = _studentApplicationService.Get(id);
+            var studentDomain = _studentApplicationService.Get(id);
 
-            if (student == null)
+            if (studentDomain == null)
             {
                 return NotFound();
             }
 
-            var studentDto = _mapper.ConvertToStudentDto(student);
+            var studentDto = _mapper.Map<Domain.Entities.Student, StudentDto>(studentDomain);
 
             return Ok(studentDto);
         }
@@ -83,16 +80,16 @@
         [Route("v1/[controller]")]
         public IActionResult Create(StudentDto studentDto)
         {
-            var newStudent = _mapper.ConvertToStudent(studentDto);
+            var studentDomain = _mapper.Map<StudentDto, Domain.Entities.Student>(studentDto);
 
-            (bool conflict, newStudent) = _studentApplicationService.Create(newStudent);
+            (bool conflict, Domain.Entities.Student newStudentDomain) = _studentApplicationService.Create(studentDomain);
 
             if (conflict)
             {
                 return Conflict();
             }
 
-            var newStudentDto = _mapper.ConvertToStudentDto(newStudent);
+            var newStudentDto = _mapper.Map<Domain.Entities.Student, StudentDto>(newStudentDomain);
 
             return Created("", newStudentDto);
         }
@@ -107,9 +104,9 @@
                 return BadRequest();
             }
 
-            var newStudent = _mapper.ConvertToStudent(studentDto);
+            var studentDomain = _mapper.Map<StudentDto, Domain.Entities.Student>(studentDto);
 
-            (bool notFound, _) = _studentApplicationService.Update(newStudent);
+            (bool notFound, _) = _studentApplicationService.Update(studentDomain);
 
             if (notFound)
             {

@@ -1,27 +1,36 @@
 ﻿namespace GradeApi.Domain.Services
 {
-    using GradeApi.Persistence.Entitites;
+    using AutoMapper;
+    using GradeApi.Domain.Entities;
     using GradeApi.Persistence.Repositories;
     using System.Collections.Generic;
     using System.Linq;
+    using StorageStudent = Persistence.Entitites.Student;
 
     public class StudentDomainService : IStudentDomainService
     {
+        private readonly IMapper _mapper;
         private readonly IStudentRepository _studentRepository;
 
-        public StudentDomainService(IStudentRepository studentRepository)
+        public StudentDomainService(IMapper mapper,
+            IStudentRepository studentRepository)
         {
+            _mapper = mapper;
             _studentRepository = studentRepository;
         }
 
         public IEnumerable<Student> GetAll()
         {
-            return _studentRepository.GetAll();
+            var allStorage = _studentRepository.GetAll();
+            var allDomain = _mapper.Map<IQueryable<StorageStudent>, IEnumerable<Student>>(allStorage);
+            return allDomain;
         }
 
         public Student Get(int id)
         {
-            return _studentRepository.GetById(id);
+            var studentStorage = _studentRepository.GetById(id);
+            var studentDomain = _mapper.Map<StorageStudent, Student>(studentStorage);
+            return studentDomain;
         }
 
         public bool Delete(int id)
@@ -43,14 +52,20 @@
 
         public Student Create(Student student)
         {
+            var studentStorage = _mapper.Map<Student, StorageStudent>(student);
             // Pensad qué pasa si alguien inserta los mismo en este punto
-            return _studentRepository.Insert(student);
+            studentStorage = _studentRepository.Insert(studentStorage);
+            var studentDomain = _mapper.Map<StorageStudent, Student>(studentStorage);
+            return studentDomain;
         }
 
         public Student Update(Student student)
         {
+            var studentStorage = _mapper.Map<Student, StorageStudent>(student);
             // Pensad qué pasa si alguien elimina el estudiante en este punto
-            return _studentRepository.Update(student);
+            studentStorage = _studentRepository.Update(studentStorage);
+            var studentDomain = _mapper.Map<StorageStudent, Student>(studentStorage);
+            return studentDomain;
         }
     }
 }
