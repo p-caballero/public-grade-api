@@ -31,21 +31,25 @@
         public bool Exist(string name)
         {
             throw new System.NotImplementedException();
+            // Comprobar la existencia usando el repositorio según [Name]
         }
 
         public bool Exist(int id)
         {
             throw new System.NotImplementedException();
+            // Comprobar la existencia usando el repositorio según [ID]
         }
 
         public Student Create(Student student)
         {
             throw new System.NotImplementedException();
+            // Insertar un estudiante usando el repositorio
         }
 
         public Student Update(Student student)
         {
             throw new System.NotImplementedException();
+            // Actualizar un estudiante utilizando el repositorio
         }
     }
 }
