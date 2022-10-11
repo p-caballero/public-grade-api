@@ -13,6 +13,18 @@
             _studentDomainService = studentDomainService;
         }
 
+        public (bool conflict, Student student) Create(Student student)
+        {
+            if (_studentDomainService.Exist(student.Name))
+            {
+                return (true, null);
+            }
+
+            var newStudent = _studentDomainService.Create(student);
+
+            return (conflict: false, student: newStudent);
+        }
+
         public bool Delete(int id)
         {
             //_logger.LogWarning($"ELIMINANDO ESTUDIANTE S{id}");
@@ -27,6 +39,18 @@
         public IEnumerable<Student> GetAll()
         {
             return _studentDomainService.GetAll();
+        }
+
+        public (bool notFound, Student student) Update(Student student)
+        {
+            if (!_studentDomainService.Exist(student.Id))
+            {
+                return (true, null);
+            }
+
+            var newStudent = _studentDomainService.Update(student);
+
+            return (notFound: false, student: newStudent);
         }
     }
 }

@@ -27,5 +27,25 @@
         {
             return _studentRepository.Delete(id);
         }
+
+        public bool Exist(string name)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool Exist(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Student Create(Student student)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Student Update(Student student)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

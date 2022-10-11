@@ -7,6 +7,7 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using System.Linq;
+    using GradeApi.Persistence.Entitites;
 
     [ApiController]
     [Route("[controller]")]
@@ -76,6 +77,46 @@
             }
 
             return NotFound();
+        }
+
+        [HttpPost]
+        [Route("v1/[controller]")]
+        public IActionResult Create(StudentDto studentDto)
+        {
+            var newStudent = _mapper.ConvertToStudent(studentDto);
+
+            (bool conflict, newStudent) = _studentApplicationService.Create(newStudent);
+
+            if (conflict)
+            {
+                return Conflict();
+            }
+
+            var newStudentDto = _mapper.ConvertToStudentDto(newStudent);
+
+            return Created("", newStudentDto);
+        }
+
+        [HttpPut]
+        [Route("v1/[controller]/{code}")]
+        public IActionResult Update(string code, StudentDto studentDto)
+        {
+            if (!code.StartsWith(studentPrefix) || !int.TryParse(code.AsSpan(1), out int id) ||
+                code != studentDto.Code)
+            {
+                return BadRequest();
+            }
+
+            var newStudent = _mapper.ConvertToStudent(studentDto);
+
+            (bool notFound, _) = _studentApplicationService.Update(newStudent);
+
+            if (notFound)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
         }
     }
 }

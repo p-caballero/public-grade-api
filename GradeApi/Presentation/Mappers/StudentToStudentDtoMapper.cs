@@ -34,5 +34,31 @@
 
             return studentDto;
         }
+
+        public Student ConvertToStudent(StudentDto studentDto)
+        {
+            if (studentDto == null)
+            {
+                return null;
+            }
+
+            int id;
+            if (studentDto.Code != null && studentDto.Code.Length > 1)
+            {
+                id = int.Parse(studentDto.Code[1..]);
+            } else
+            {
+                id = 0;
+            }
+
+            var student = new Student()
+            {
+                Id = id,
+                Name = studentDto.Name,
+                DateOfBirth = studentDto.DateOfBirth,
+            };
+
+            return student;
+        }
     }
 }
