@@ -1,6 +1,7 @@
 ﻿namespace IntegrationTests
 {
     using FluentAssertions;
+    using Microsoft.EntityFrameworkCore;
     using System.Linq;
     using Xunit;
 
@@ -42,8 +43,26 @@
         [Fact]
         public void Update_student_weight_of_a_grade()
         {
-            // TODO: Todos los estudiantes del grado 1 suben 1 kilo si tienen el peso
-            false.Should().BeTrue("Pendiente");
+            _dbContext.ChangeTracker.Clear();
+
+            // 1.- Traer todos los estudiantes del grado acabado en "1" y que tengan peso (que no sea nulo)
+            var allStudents = _dbContext.Grades
+                .Include(g => g.Courses)
+                .ThenInclude(x => x.StudentCourses)
+                .ThenInclude(x => x.Student)
+                .Where(x => x.Name.EndsWith("1"))
+                .SelectMany(x => x.Courses.SelectMany(c => c.StudentCourses).Select(x => x.Student).Where(s => s.Weight != null))
+                .Distinct()
+                .ToList();
+
+            // 2.- Cambiar para cada uno de ellos el peso (incrementar en 1)
+            foreach(var student in allStudents)
+            {
+                student.Weight++;
+            }
+
+            // 3.- Guardar los cambios
+            _dbContext.SaveChanges();
         }
     }
 }
