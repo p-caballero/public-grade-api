@@ -202,6 +202,25 @@
         public void los_creditos_por_grado()
         {
             // Pista agrupar por grado y hay un método Sum para sumar.
+            var result = _dbContext.Grades
+                .Include(x => x.Courses)
+                .Select(x => new { x.Name, Credits = x.Courses.Sum(c => c.Credits) })
+                .ToList();
+
+            result.ForEach(x => _output.WriteLine($"Nombre: {x.Name} - Créditos: {x.Credits}"));
+        }
+
+        [Fact]
+        public void los_creditos_por_grado_con_group_by()
+        {
+            // Pista agrupar por grado y hay un método Sum para sumar.
+            var result = _dbContext.Courses
+                .Include(x => x.Grade)
+                .GroupBy(x => x.GradeId)
+                .Select(x => new { Name = x.First().Grade.Name, Credits = x.Sum(y => y.Credits) })
+                .ToList();
+
+            result.ForEach(x => _output.WriteLine($"Nombre: {x.Name} - Créditos: {x.Credits}"));
         }
     }
 }
