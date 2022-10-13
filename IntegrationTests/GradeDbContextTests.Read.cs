@@ -131,9 +131,25 @@
         }
 
         [Fact]
+        public void obtener_todos_los_estudiantes_que_empiecen_por_n_con_like()
+        {
+            var result = _dbContext.Students
+                .Where(x => EF.Functions.Like(x.Name, "N%"))
+                .ToList();
+
+            result.Should().HaveCount(1);
+            result[0].Name.Should().StartWith("Narciso");
+        }
+
+        [Fact]
         public void obtener_todos_los_estudiantes_que_empiecen_por_n()
         {
-            
+            var result = _dbContext.Students
+                .Where(x => x.Name.StartsWith("N"))
+                .ToList();
+
+            result.Should().HaveCount(1);
+            result[0].Name.Should().StartWith("N");
         }
     }
 }
