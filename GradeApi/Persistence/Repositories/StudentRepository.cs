@@ -1,6 +1,6 @@
 ﻿namespace GradeApi.Persistence.Repositories
 {
-    using GradeApi.Persistence.Entitites;
+    using GradeApi.Persistence.Entities;
     using Microsoft.EntityFrameworkCore;
     using System;
     using System.Linq;

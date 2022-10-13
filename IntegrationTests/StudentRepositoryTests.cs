@@ -1,7 +1,7 @@
 ﻿namespace IntegrationTests
 {
     using FluentAssertions;
-    using GradeApi.Persistence.Entitites;
+    using GradeApi.Persistence.Entities;
     using GradeApi.Persistence.Repositories;
     using Microsoft.EntityFrameworkCore;
     using System;

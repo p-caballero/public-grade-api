@@ -1,7 +1,7 @@
 ﻿namespace GradeApi.Infrastructure
 {
     using GradeApi.Persistence;
-    using GradeApi.Persistence.Entitites;
+    using GradeApi.Persistence.Entities;
     using Microsoft.EntityFrameworkCore;
     using System;
     using System.IO;

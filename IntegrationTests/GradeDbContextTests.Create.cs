@@ -1,7 +1,7 @@
 ﻿namespace IntegrationTests
 {
     using FluentAssertions;
-    using GradeApi.Persistence.Entitites;
+    using GradeApi.Persistence.Entities;
     using System.Linq;
     using Xunit;
 

@@ -1,6 +1,6 @@
 ﻿namespace GradeApi.Persistence.Repositories
 {
-    using GradeApi.Persistence.Entitites;
+    using GradeApi.Persistence.Entities;
     using System.Linq;
 
     public interface IStudentRepository

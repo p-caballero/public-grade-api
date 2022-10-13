@@ -7,18 +7,18 @@
         public DomainPersistenceProfile()
             : base(nameof(DomainPersistenceProfile))
         {
-            CreateMap<Domain.Entities.Student, Persistence.Entitites.Student>()
+            CreateMap<Domain.Entities.Student, Persistence.Entities.Student>()
                 .ForMember(dest => dest.Weight, opt => opt.Ignore())
                 .ForMember(dest => dest.Height, opt => opt.Ignore())
                 .ForMember(dest => dest.StudentCourses, opt => opt.Ignore());
 
-            CreateMap<Persistence.Entitites.Student, Domain.Entities.Student>();
+            CreateMap<Persistence.Entities.Student, Domain.Entities.Student>();
 
-            CreateMap<Domain.Entities.StudentAddress, Persistence.Entitites.StudentAddress>()
+            CreateMap<Domain.Entities.StudentAddress, Persistence.Entities.StudentAddress>()
                 .ForMember(dest => dest.Student, opt => opt.Ignore())
                 .ForMember(dest => dest.StudentId, opt => opt.Ignore());
 
-            CreateMap<Persistence.Entitites.StudentAddress, Domain.Entities.StudentAddress>();
+            CreateMap<Persistence.Entities.StudentAddress, Domain.Entities.StudentAddress>();
         }
     }
 }

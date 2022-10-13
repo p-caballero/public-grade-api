@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Persistence\Entitites\**" />
+    <Content Remove="Persistence\Entitites\**" />
+    <EmbeddedResource Remove="Persistence\Entitites\**" />
+    <None Remove="Persistence\Entitites\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="Infrastructure\Seeds\grades.json" />
   </ItemGroup>
 

@@ -5,7 +5,7 @@
     using GradeApi.Persistence.Repositories;
     using System.Collections.Generic;
     using System.Linq;
-    using StorageStudent = Persistence.Entitites.Student;
+    using StorageStudent = GradeApi.Persistence.Entities.Student;
 
     public class StudentDomainService : IStudentDomainService
     {
