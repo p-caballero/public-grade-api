@@ -197,5 +197,11 @@
 
             result.ForEach(x => _output.WriteLine($"Name: {x.Name} - Peso: {x.WeightLb} lb"));
         }
+
+        [Fact]
+        public void los_creditos_por_grado()
+        {
+            // Pista agrupar por grado y hay un método Sum para sumar.
+        }
     }
 }
