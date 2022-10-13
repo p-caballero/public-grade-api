@@ -191,8 +191,11 @@
         {
             // Pista: Usar ToList y hay que proyectar
             const double kgPerLb = 2.2046; // Kilos por libras
+            var result = _dbContext.Students
+                .Select(x => new { x.Name, WeightLb = x.Weight * kgPerLb })
+                .ToList();
 
-            // result.ForEach(x => _output.WriteLine($"Créditos: {x.Name} - Número: {x.WeightLb}"));
+            result.ForEach(x => _output.WriteLine($"Name: {x.Name} - Peso: {x.WeightLb} lb"));
         }
     }
 }
