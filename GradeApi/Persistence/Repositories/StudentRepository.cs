@@ -2,6 +2,7 @@
 {
     using GradeApi.Persistence.Entitites;
     using Microsoft.EntityFrameworkCore;
+    using System;
     using System.Linq;
 
     public class StudentRepository : AbstractRepository<Student>, IStudentRepository
@@ -43,7 +44,16 @@
 
         public Student Insert(Student student)
         {
-            throw new System.NotImplementedException();
+            var entryStudent = DbContext.Entry(student);
+
+            if (entryStudent.State != EntityState.Detached)
+            {
+                throw new InvalidOperationException("Entity should be detached!");
+            }
+
+            DbContext.Students.Add(student);
+            DbContext.SaveChanges();
+            return student;
         }
 
         Student IStudentRepository.Update(Student student)

@@ -3,6 +3,8 @@
     using FluentAssertions;
     using GradeApi.Persistence.Entitites;
     using GradeApi.Persistence.Repositories;
+    using Microsoft.EntityFrameworkCore;
+    using System;
     using System.Linq;
     using Xunit;
 
@@ -67,7 +69,9 @@
         public void Insert_ExistingStudent_ReturnCreatedStudent()
         {
             // Arrange
-            Student existingStudent = null;
+            Student existingStudent = DbContext.Students.AsNoTracking().First();
+            int previousId = existingStudent.Id;
+            existingStudent.Id = 0;
 
             // Act
             var actual = _repository.Insert(existingStudent);
@@ -75,16 +79,38 @@
             // Assert
 
             // <El estudiante se ha creado, es diferente al existente y los campos pasado se han guardado>
+            actual.Should().NotBeNull();
+            actual.Id.Should().NotBe(0);
+            actual.Id.Should().NotBe(previousId);
         }
 
         [Fact]
         public void Insert_NonExistingStudent_ReturnCreatedStudent()
         {
             // Arrange
+            Student nonExistingStudent = new Student
+            {
+                Name = "Juan Pérez 2022",
+            };
 
             // Act
+            var actual = _repository.Insert(nonExistingStudent);
 
             // Assert
+            actual.Should().NotBeNull();
+            actual.Id.Should().NotBe(0);
+        }
+
+        [Fact]
+        public void Insert_ExistingTrackedStudent_ThrowsException()
+        {
+            // Arrange
+            Student existingStudent = DbContext.Students.First();
+
+            Action act = () => _repository.Insert(existingStudent);
+
+            // Act
+            act.Should().Throw<InvalidOperationException>();
         }
 
         [Fact]
