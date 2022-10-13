@@ -2,6 +2,7 @@
 {
     using FluentAssertions;
     using Microsoft.EntityFrameworkCore;
+    using System;
     using System.Linq;
     using System.Threading.Tasks;
     using Xunit;
@@ -164,7 +165,13 @@
         [Fact]
         public void todos_los_estudiantes_de_menor_a_mayor_en_edad()
         {
+            var result = _dbContext.Students
+                .Where(x => x.DateOfBirth != null)
+                .OrderBy(x => x.DateOfBirth)
+                .Take(100)
+                .ToList();
 
+            result.ForEach(x => _output.WriteLine($"{x.Name} - {Math.Round((DateTime.Now - x.DateOfBirth.Value).TotalDays / 365, 2)} años"));
         }
     }
 }
