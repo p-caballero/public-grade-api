@@ -41,5 +41,10 @@
         {
             DbContext.Set<TEntity>().Remove(entity);
         }
+
+        public int SaveChanges()
+        {
+            return DbContext.SaveChanges();
+        }
     }
 }

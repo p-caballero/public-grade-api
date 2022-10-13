@@ -61,9 +61,15 @@
 
         public Student Update(Student student)
         {
-            var studentStorage = _mapper.Map<Student, StorageStudent>(student);
+            var oldStudent = _studentRepository.GetById(student.Id);
+
+            // Automapper pisa los datos que se han cambiado
+            var studentStorage = _mapper.Map<Student, StorageStudent>(student, oldStudent);
+            
             // Pensad qué pasa si alguien elimina el estudiante en este punto
-            studentStorage = _studentRepository.Update(studentStorage);
+            _studentRepository.SaveChanges();
+
+            //studentStorage = _studentRepository.Update(studentStorage);
             var studentDomain = _mapper.Map<StorageStudent, Student>(studentStorage);
             return studentDomain;
         }

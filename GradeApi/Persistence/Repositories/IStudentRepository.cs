@@ -13,6 +13,6 @@
 
         Student Insert(Student student);
 
-        Student Update(Student student);
+        int SaveChanges();
     }
 }

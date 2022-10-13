@@ -56,9 +56,14 @@
             return student;
         }
 
-        Student IStudentRepository.Update(Student student)
+        /// <summary>
+        /// Otra forma más sencilla (tal vez).
+        /// </summary>
+        public Student Insert2(Student student)
         {
-            throw new System.NotImplementedException();
+            Add(student);
+            DbContext.SaveChanges();
+            return student;
         }
     }
 }

@@ -112,25 +112,5 @@
             // Act
             act.Should().Throw<InvalidOperationException>();
         }
-
-        [Fact]
-        public void Update_ExistingStudent_ReturnUpdatedStudent()
-        {
-            // Arrange
-
-            // Act
-
-            // Assert
-        }
-
-        [Fact]
-        public void Update_NonExistingStudent_ReturnNull()
-        {
-            // Arrange
-
-            // Act
-
-            // Assert
-        }
     }
 }
