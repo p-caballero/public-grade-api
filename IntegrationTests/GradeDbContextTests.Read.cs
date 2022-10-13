@@ -185,5 +185,14 @@
 
             result.ForEach(x => _output.WriteLine($"Créditos: {x.Credits} - Número: {x.Count}"));
         }
+
+        [Fact]
+        public void el_nombre_de_todos_los_estudiantes_y_su_peso_en_libras()
+        {
+            // Pista: Usar ToList y hay que proyectar
+            const double kgPerLb = 2.2046; // Kilos por libras
+
+            // result.ForEach(x => _output.WriteLine($"Créditos: {x.Name} - Número: {x.WeightLb}"));
+        }
     }
 }
