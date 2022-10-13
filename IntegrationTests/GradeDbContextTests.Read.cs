@@ -178,8 +178,12 @@
         public void contar_cuantos_cursos_hay_por_numero_creditos()
         {
             // Pista: Usar GroupBy
+            var result = _dbContext.Courses
+                .GroupBy(x => x.Credits)
+                .Select(x => new { Credits = x.Key, Count = x.Count() })
+                .ToList();
 
-            //result.ForEach(x => _output.WriteLine($"Créditos: {x.Credits} - Número: {x.Count}"));
+            result.ForEach(x => _output.WriteLine($"Créditos: {x.Credits} - Número: {x.Count}"));
         }
     }
 }
