@@ -151,5 +151,11 @@
             result.Should().HaveCount(1);
             result[0].Name.Should().StartWith("N");
         }
+
+        [Fact]
+        public void obtener_las_asignaturas_con_más_de_6_créditos()
+        {
+
+        }
     }
 }
