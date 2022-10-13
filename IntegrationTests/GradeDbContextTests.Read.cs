@@ -155,7 +155,10 @@
         [Fact]
         public void obtener_las_asignaturas_con_más_de_6_créditos()
         {
-
+            var result = _dbContext.Courses
+                .Where(x => x.Credits > 6)
+                .Take(1000) // Como máximo 1000 entradas (cuidado con traeros la base de datos entera)
+                .ToList();
         }
     }
 }
