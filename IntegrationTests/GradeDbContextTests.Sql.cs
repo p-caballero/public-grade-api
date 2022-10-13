@@ -2,6 +2,7 @@
 {
     using FluentAssertions;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Internal;
     using System.Linq;
     using Xunit;
 
@@ -39,6 +40,14 @@ WHERE
 
             _dbContext.Grades.Where(x => x.Section == "Degrees")
                 .Should().HaveCount(4);
+        }
+
+        [Fact]
+        public void Execute_storage_procedure_with_ExecuteSqlRaw()
+        {
+            int noRows = _dbContext.Database.ExecuteSqlRaw("EXECUTE [dbo].[sp_get_students_by_course_name] 'Sistemas Operativos'");
+
+            noRows.Should().Be(-1);
         }
     }
 }
